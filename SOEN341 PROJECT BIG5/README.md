@@ -6,11 +6,11 @@ MealMajor – A Meal Prep and Healthy Living Planner
 ---
 
 ## Team Members
-- Danny Junior – 40157654  
-- Saib Merabet – 40317800  
-- Omar Balkis – 40191536  
-- Kareem Dadouche – 40226983  
-- Mcwill Buikpor – 40272035  
+- Danny Junior – 40157654  Both front and back_end
+- Saib Merabet – 40317800 -Back_end
+- Omar Balkis – 40191536 -Back_end
+- Kareem Dadouche – 40226983 -Front_end
+- Mcwill Buikpor – 40272035  -Front_end
 
 ---
 
