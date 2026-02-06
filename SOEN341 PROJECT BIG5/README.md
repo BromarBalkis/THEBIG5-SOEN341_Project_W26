@@ -52,3 +52,17 @@ The backend is developed using **Django (Python)**, which supports rapid develop
 The project follows the **Scrum framework**, with work organized into sprints. User stories, tasks, sprint planning, meeting minutes, and individual contribution logs are documented and managed using GitHub.
 
 Each sprint introduces new features and builds upon previous work.
+---
+## Sprint 1 Deliverables 
+- Sprint plan: `SOEN341 PROJECT BIG5/Sprint1/Sprint Plan/`
+- User stories & tasks: GitHub Issues (prefix `US.##` and `Task.##`)
+- Meeting minutes: `SOEN341 PROJECT BIG5/Sprint1/Minutes/`
+- Individual logs: `SOEN341 PROJECT BIG5/Sprint1/Logs/`
+- Demo code: `SOEN341 PROJECT BIG5/Sprint1/Demo Code/`
+
+## Demo (Sprint 1)
+This sprint demos at least one User Account Management feature (e.g., login/registration/profile).
+
+## How to run:
+ 
+---
