@@ -6,7 +6,7 @@ MealMajor – A Meal Prep and Healthy Living Planner
 ---
 
 ## Team Members
-- Danny Junior – 40157654  Both front and back_end
+- Daniel Yota – 40157654  Both front and back_end
 - Saib Merabet – 40317800 -Back_end
 - Omar Balkis – 40191536 -Back_end
 - Kareem Dadouche – 40226983 -Front_end
