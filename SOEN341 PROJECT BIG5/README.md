@@ -61,8 +61,9 @@ Each sprint introduces new features and builds upon previous work.
 - Demo code: `SOEN341 PROJECT BIG5/Sprint1/Demo Code/`
 
 ## Demo (Sprint 1)
-This sprint demos at least one User Account Management feature (e.g., login/registration/profile).
+This sprint demos at least one User Account Management feature, for this demo we will show how the login process is done
 
 ## How to run:
- 
+
+ Enter username, password and user info to access the website
 ---
