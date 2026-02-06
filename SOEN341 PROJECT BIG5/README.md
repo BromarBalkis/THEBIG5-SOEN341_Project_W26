@@ -44,7 +44,7 @@ This project is developed as part of **SOEN 341 – Software Process (Winter 202
 ## Technologies Used
 The frontend of the application is developed using **HTML, CSS, and plain JavaScript**, rendered through **Django templates**. This approach allows for a clear separation between frontend presentation and backend logic while keeping the system simple and maintainable.
 
-The backend is developed using **Django (Python)**, which supports rapid development and provides built-in tools for user authentication and data management.
+The backend is developed using **Node JS (Javascript)**, which supports rapid development and provides built-in tools for user authentication and data management.
 
 ---
 
