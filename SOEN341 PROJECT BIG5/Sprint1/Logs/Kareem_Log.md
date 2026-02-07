@@ -1,7 +1,8 @@
 
 Sprint 1 – MealMajor (SOEN 341 Winter 2026)
 
-Kareem Dadouche – Contribution Log
+**Kareem Dadouche – Contribution Log**
+
 Role: Front-End Developer & GitHub Setup
 
 During Sprint 1, I contributed primarily in two key areas: GitHub project setup and Front-End development. I was responsible for structuring the repository according to the project requirements and ensuring that all Sprint 1 deliverables were organized clearly within the designated folder hierarchy. 
@@ -17,7 +18,8 @@ Overall, my contributions ensured that the team had a properly structured GitHub
 
 
 
-Daniel Yota – Contribution Log
+**Daniel Yota – Contribution Log** 
+
 Role: fronten & Backend Coordinator
 
 During Sprint 1, I contributed primarily in the areas of team coordination, GitHub repository setup, backend preparation, and project documentation. I was responsible for coordinating and facilitating all team meetings, ensuring that discussions remained focused on sprint objectives, deliverables, and deadlines. I also coordinated team-wide decisions regarding the selection of development tools and the Integrated Development Environment (IDE), ensuring consistency across all team members and alignment with project requirements.
@@ -28,7 +30,8 @@ my contributions overall ensured that the team had a well-structured GitHub repo
 
 
 
-Mcwill Buikpor – Contribution Log 
+**Mcwill Buikpor – Contribution Log**
+
 Role: Front-End Developer
 
 During Sprint 1, I contributed primarily to the front-end development of the MealMajor application. My focus was on building the initial user interface layout and supporting the creation of basic front-end pages required for the project’s early functionality. I worked on structuring the visual layout of the application to ensure consistency, usability, and alignment with the sprint objectives.
@@ -39,7 +42,8 @@ In addition, I supported the styling process by applying CSS and layout adjustme
 
 
 
-Omar – Contribution Log
+**Omar Balkis – Contribution Log**
+
 Role: Front-End Developer & Sprint Documentation Support
 
 During Sprint 1, I contributed primarily to the front-end development of the MealMajor application and supported the team in preparing Sprint 1 documentation. My work focused on implementing user interface components required for the sprint deliverable and ensuring that the front-end aligned with the project’s functional requirements.
@@ -50,7 +54,8 @@ In addition to front-end development, I contributed to Sprint 1 documentation by
 
 
 
-Saib – Contribution Log
+**Saib Merabet – Contribution Log**
+
 Role: Backend Developer & Repository Implementation
 
 During Sprint 1, I contributed primarily to the backend development and implementation of the MealMajor application. My main responsibility was setting up and coding the core backend functionality required for the sprint deliverable, ensuring that the system could support user account management features in a functional and demonstrable manner.
@@ -58,3 +63,4 @@ During Sprint 1, I contributed primarily to the backend development and implemen
 I designed and implemented the backend logic for user authentication and account-related operations. This included setting up the backend subfolder within the GitHub repository, organizing the server-side code structure, and implementing the necessary endpoints to support registration and login functionality. I ensured that the backend code was functional, well-organized, and aligned with the project’s technical requirements for Sprint 1.
 
 In addition to backend development, I was responsible for pushing backend code to the GitHub repository and maintaining version control best practices. I committed and pushed my changes consistently, ensuring that the backend implementation was properly tracked and accessible to the rest of the team. My work enabled smooth integration with other components of the project and supported collaborative development.
+
