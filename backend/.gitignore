@@ -1,0 +1,11 @@
+# Secrets
+.env
+backend/.env
+
+# Node
+node_modules
+backend/node_modules
+
+# IDE
+.idea/
+.vscode/
