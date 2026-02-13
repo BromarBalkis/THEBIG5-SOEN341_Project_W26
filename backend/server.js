@@ -1,5 +1,8 @@
 // server.js
 require("dotenv").config();
+const authRoutes = require("./src/routes/auth");
+const userRoutes = require("./src/routes/users");
+
 
 const express = require("express");
 const cors = require("cors");
@@ -20,6 +23,9 @@ app.get("/", (req, res) => {
 });
 
 const PORT = Number(process.env.PORT) || 3000;
+app.use("/auth", authRoutes);
+app.use("/users", userRoutes);
+app.use(cors({ origin: "http://localhost:5173" }));
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
