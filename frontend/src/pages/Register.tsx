@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
-// Change this path if your backend uses something else:
+// We need to remember to update this if our backend endpoint is different
 const REGISTER_URL = `${BASE_URL}/auth/register`;
 
 export default function Register() {
@@ -42,7 +42,7 @@ export default function Register() {
         return;
       }
 
-      // If backend returns token on register, you can store it.
+      // Here If backend returns token on register, then we can store it.
       // If not, just navigate to login.
       setStatus("Account created. Redirecting to login...");
       setTimeout(() => nav("/login"), 600);
