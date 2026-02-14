@@ -1,19 +1,16 @@
 // src/lib/apiClient.ts
 import * as ApiMod from "./api";
 
-/**
- * This adapter tries to use whatever your existing api.ts exports,
- * without breaking it. It exposes a named export: api(path, options)
- */
+
 export async function api(path: string, options: { method?: string; body?: any } = {}) {
   const mod: any = ApiMod as any;
 
-  // Common patterns your api.ts might already use
+  
   const candidate =
-    mod.api ||            // export function api(...)
-    mod.request ||        // export function request(...)
-    mod.client ||         // export const client = ...
-    mod.default;          // export default ...
+    mod.api ||            //our export function api
+    mod.request ||        //our export function request(...)
+    mod.client ||         //our export const client = ...
+    mod.default;          //our export default ...
 
   if (!candidate) {
     throw new Error(
@@ -21,13 +18,13 @@ export async function api(path: string, options: { method?: string; body?: any }
     );
   }
 
-  // Case 1: candidate is a function like request(path, options)
+  // scenario 1: candidate is a function like request(path, options)
   if (typeof candidate === "function") {
     return candidate(path, options);
   }
 
-  // Case 2: candidate is an object client with methods
-  // Try: candidate.request / candidate.post / candidate.fetch
+  // scenario 2: candidate is an object client with methods
+  // then we Try: candidate.request / candidate.post / candidate.fetch
   if (candidate.request) return candidate.request(path, options);
 
   if (options.method?.toUpperCase() === "POST" && candidate.post) {

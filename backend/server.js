@@ -17,7 +17,7 @@ app.get("/health", (req, res) => {
   res.status(200).json({ ok: true, message: "Backend is running" });
 });
 
-// Optional: root route
+//  root route
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome to the API" });
 });
