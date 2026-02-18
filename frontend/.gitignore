@@ -1,0 +1,16 @@
+# Secrets
+.env
+frontend/.env
+
+# Node
+node_modules
+frontend/node_modules
+
+# IDE
+.idea/
+.vscode/
+
+/generated/prisma
+testPrisma.js
+package.json
+package-lock.json
