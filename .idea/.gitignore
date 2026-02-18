@@ -4,5 +4,26 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 .DS_Store
-backend/.DS_Store
+
+#Frontend
 frontend/.DS_Store
+frontend/node_modules
+frontend/package.json
+frontend/package-lock.json
+
+#Backend
+# Secrets
+.env
+backend/.env
+
+# Node
+node_modules
+backend/node_modules
+
+# IDE
+.idea/
+.vscode/
+
+backend/.DS_Store
+/generated/prisma
+testPrisma.js
