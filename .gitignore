@@ -5,13 +5,11 @@
 /httpRequests/
 .DS_Store
 
-#Frontend
 frontend/.DS_Store
 frontend/node_modules
 frontend/package.json
 frontend/package-lock.json
 
-#Backend
 # Secrets
 .env
 backend/.env
