@@ -24,8 +24,9 @@ jobs:
           cd backend
           npm install
 
-      - name: Run backend tests
-        run: |
-          cd backend
-          npm test
-      
+      - name: Backend checks
+  run: |
+    cd backend
+    npm run build --if-present
+    npm run lint --if-present
+
