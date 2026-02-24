@@ -68,31 +68,31 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return true
   }, [])
 
-  const register = useCallback(async (data: RegisterData) => {
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-    try {
-      const newUser: User = {
-        ...mockUser,
-        id: Date.now().toString(),
-        fullName: data.fullName,
-        username: data.username,
-        email: data.email,
-        dietaryPreferences: [],
-        allergies: [],
-        createdAt: new Date(),
-      };
+const register = useCallback(async (data: RegisterData): Promise<boolean> => {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(newUser));
-      setCurrentUser(newUser);
-      setIsAuthenticated(true);
-      return true;
-    } catch (error) {
-      console.error('Registration failed:', error);
-      return false;
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || "Registration failed");
     }
-  }, []);
+
+    return true; // success → redirect to login
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}, []);
+  
 
   const logout = useCallback(() => {
     localStorage.removeItem(STORAGE_KEY)
