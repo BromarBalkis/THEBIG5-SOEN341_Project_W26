@@ -9,7 +9,6 @@ import React, {
   ReactNode,
 } from 'react';
 import type { User, RegisterData } from '@/types';
-import { mockUser } from '@/lib/mockData';
 
 export interface AuthContextType {
   currentUser: User | null;
@@ -31,42 +30,45 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY)
-      const hasCookie = document.cookie.includes('mealmajor_authenticated=true')
-      
-      if (stored && hasCookie) {
-        setCurrentUser(JSON.parse(stored))
-        setIsAuthenticated(true)
-      } else if (stored && !hasCookie) {
-        // Cookie expired but localStorage still has data - set cookie again
-        document.cookie = 'mealmajor_authenticated=true; path=/; max-age=86400'
-        setCurrentUser(JSON.parse(stored))
-        setIsAuthenticated(true)
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    setIsAuthenticated(true);
+  }
+
+  setIsLoading(false);
+}, []);
+
+ const login = useCallback(async (email: string, password: string): Promise<boolean> => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
       }
-    } catch (error) {
-      console.error('Auth restore error:', error)
-    } finally {
-      setIsLoading(false)
+    );
+
+    if (!response.ok) {
+      return false;
     }
-  }, [])
 
-  const login = useCallback(async (email: string, password: string): Promise<boolean> => {
-    console.log('Login attempt:', email)
-    if (!email || !password) return false
+    const data = await response.json();
 
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    // Save JWT
+    localStorage.setItem("token", data.token);
+    document.cookie = "mealmajor_authenticated=true; path=/"
+    setIsAuthenticated(true);
 
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(mockUser))
-    
-    // Set cookie for middleware
-    document.cookie = 'mealmajor_authenticated=true; path=/; max-age=86400'
-    
-    setCurrentUser(mockUser)
-    setIsAuthenticated(true)
-    console.log('Login successful!')
-    return true
-  }, [])
+    return true;
+  } catch (error) {
+    console.error("Login failed:", error);
+    return false;
+  }
+}, []);
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -95,14 +97,11 @@ const register = useCallback(async (data: RegisterData): Promise<boolean> => {
   
 
   const logout = useCallback(() => {
-    localStorage.removeItem(STORAGE_KEY)
-    
-    // Remove cookie
-    document.cookie = 'mealmajor_authenticated=; path=/; max-age=0'
-    
-    setCurrentUser(null)
-    setIsAuthenticated(false)
-  }, [])
+  localStorage.removeItem("token");
+  document.cookie = "mealmajor_authenticated=; path=/; max-age=0"
+  setCurrentUser(null);
+  setIsAuthenticated(false);
+}, []);
 
   const updateProfile = useCallback((data: Partial<User>) => {
     if (!currentUser) {
