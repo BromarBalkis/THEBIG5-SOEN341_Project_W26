@@ -1,48 +1,29 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { login } from "../lib/api";
 import { setToken } from "../lib/auth";
 
 export default function Login() {
   const nav = useNavigate();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = async () => {
+  async function handleLogin() {
     setLoading(true);
-    setStatus("Logging in...");
+    setStatus("");
 
     try {
-      
-      const res = await fetch("http://localhost:3000/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (!res.ok) {
-        const msg = await res.text();
-        throw new Error(msg || "Login failed");
-      }
-
-      //this portion expects { token: "..." }
-      const data: { token?: string } = await res.json();
-
-      if (!data.token) throw new Error("No token returned from server");
-
-      // this should store token so RequireAuth lets you in
-      setToken(data.token);
-
-      // navigate to dashboard
-      nav("/dashboard", { replace: true });
-    } catch (err: any) {
-      setStatus(err?.message || "Login failed");
+      const token = await login(email, password); // returns token string
+      setToken(token);
+      nav("/home", { replace: true });
+    } catch (e: any) {
+      setStatus(e.message || "Login failed");
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   return (
     <div className="card">
@@ -55,13 +36,7 @@ export default function Login() {
 
       <div className="field">
         <div className="label">Email</div>
-        <input
-          className="input"
-          placeholder="you@email.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          autoComplete="email"
-        />
+        <input className="input" value={email} onChange={(e) => setEmail(e.target.value)} />
       </div>
 
       <div className="field">
@@ -69,16 +44,18 @@ export default function Login() {
         <input
           className="input"
           type="password"
-          placeholder="••••••••"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          autoComplete="current-password"
         />
       </div>
 
       <button className="btn" type="button" onClick={handleLogin} disabled={loading}>
         {loading ? "Logging in..." : "Sign In"}
       </button>
+
+      <Link className="btn" to="/register" style={{ marginTop: 10, display: "inline-block" }}>
+        Register
+      </Link>
 
       {status && <div className="status">{status}</div>}
     </div>

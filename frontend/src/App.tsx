@@ -1,63 +1,74 @@
-import { Routes, Route, NavLink, Navigate } from "react-router-dom";
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Profile from "./pages/Profile";
+import HomeLayout from "./pages/HomeLayout";
 import Dashboard from "./pages/Dashboard";
+import Recipes from "./pages/Recipes";
+import RecipeNew from "./pages/RecipeNew";
+import RecipeEdit from "./pages/RecipeEdit";
 
 import { getToken } from "./lib/auth";
 
 function RequireAuth({ children }: { children: React.ReactElement }) {
   const token = getToken();
-  if (!token) return <Navigate to="/login" replace />;
+  if (!token) return <Navigate to="/login" replace />; // ✅ fixed
   return children;
 }
 
-const navClass = ({ isActive }: { isActive: boolean }) =>
-  "navLink" + (isActive ? " active" : "");
+function RedirectIfAuthed({ children }: { children: React.ReactElement }) {
+  const token = getToken();
+  if (token) return <Navigate to="/home" replace />;
+  return children;
+}
 
 export default function App() {
   return (
-    <div className="container">
-      <div className="nav">
-        <NavLink className={navClass} to="/login">
-          Login
-        </NavLink>
-        <NavLink className={navClass} to="/register">
-          Register
-        </NavLink>
-        <NavLink className={navClass} to="/dashboard">
-          Dashboard
-        </NavLink>
-        <NavLink className={navClass} to="/profile">
-          Profile
-        </NavLink>
-      </div>
+    <Routes>
+      <Route path="/" element={<Navigate to="/login" replace />} />
 
-      <div className="page">
-        <Routes>
-          <Route path="/" element={<Navigate to="/login" replace />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+      {/* Public */}
+      <Route
+        path="/login"
+        element={
+          <RedirectIfAuthed>
+            <Login />
+          </RedirectIfAuthed>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <RedirectIfAuthed>
+            <Register />
+          </RedirectIfAuthed>
+        }
+      />
 
-          <Route
-            path="/dashboard"
-            element={
-              <RequireAuth>
-                <Dashboard />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <RequireAuth>
-                <Profile />
-              </RequireAuth>
-            }
-          />
-        </Routes>
-      </div>
-    </div>
+      {/* aliases (prevents fallback to dashboard) */}
+      <Route path="/dashboard" element={<Navigate to="/home/dashboard" replace />} />
+      <Route path="/recipes" element={<Navigate to="/home/recipes" replace />} />
+      <Route path="/recipes/new" element={<Navigate to="/home/recipes/new" replace />} />
+      <Route path="/recipes/:id/edit" element={<Navigate to="/home/recipes/:id/edit" replace />} />
+
+      {/* Private under /home */}
+      <Route
+        path="/home"
+        element={
+          <RequireAuth>
+            <HomeLayout />
+          </RequireAuth>
+        }
+      >
+        <Route index element={<Navigate to="dashboard" replace />} />
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="recipes" element={<Recipes />} />
+        <Route path="recipes/new" element={<RecipeNew />} />
+        <Route path="recipes/:id/edit" element={<RecipeEdit />} />
+      </Route>
+
+      <Route path="*" element={<Navigate to="/login" replace />} />
+    </Routes>
   );
 }
