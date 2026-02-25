@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const authRoutes = require("./src/routes/auth");
 const userRoutes = require("./src/routes/users");
+const recipeRoutes = require("./src/routes/recipes");
 
 const app = express();
 
@@ -20,12 +21,9 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome to the API" });
 });
 
-app.get("/health", (req, res) => {
-  res.status(200).json({ ok: true });
-});
-
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/recipes", recipeRoutes);
 
 const PORT = Number(process.env.PORT) || 5000;
 
