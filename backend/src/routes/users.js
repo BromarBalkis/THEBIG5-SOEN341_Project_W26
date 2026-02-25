@@ -1,9 +1,9 @@
+// backend/src/routes/users.js
 const express = require("express");
 const router = express.Router();
-
 const auth = require("../middleware/auth");
-const { me } = require("../controllers/userController");
+const userController = require("../controllers/userController");
 
-router.get("/me", auth, me);
+router.get("/me", auth, userController.getMe);
 
 module.exports = router;

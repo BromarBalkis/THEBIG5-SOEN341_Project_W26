@@ -32,11 +32,40 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
   const token = localStorage.getItem("token");
 
-  if (token) {
-    setIsAuthenticated(true);
+  if (!token) {
+    setIsLoading(false);
+    return;
   }
 
-  setIsLoading(false);
+  async function fetchUser() {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/users/me`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Invalid token");
+      }
+
+      const user = await response.json();
+      setCurrentUser(user);
+      setIsAuthenticated(true);
+    } catch (err) {
+      localStorage.removeItem("token");
+      document.cookie = "mealmajor_authenticated=; path=/; max-age=0";
+      setCurrentUser(null);
+      setIsAuthenticated(false);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  fetchUser();
 }, []);
 
  const login = useCallback(async (email: string, password: string): Promise<boolean> => {
