@@ -38,12 +38,10 @@ export default function ProfilePage() {
 
   async function handleSave() {
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 800));
-
-    updateProfile({
+    await updateProfile({
       fullName,
       username,
-      dietaryPreferences: selectedDiets as DietaryPreference[],
+      dietaryPreferences: selectedDiets,
       allergies,
     });
 

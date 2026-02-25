@@ -18,10 +18,10 @@ model User {
 }
 
 model Profile {
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId         String   @unique @db.ObjectId
-  dietPreference String?
-  allergies      String[]
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId          String   @unique @db.ObjectId
+  dietPreferences String[]
+  allergies       String[]
 
   user User @relation(fields: [userId], references: [id])
 }
