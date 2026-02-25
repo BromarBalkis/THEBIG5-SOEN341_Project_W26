@@ -12,6 +12,9 @@
     "url": "git+https://github.com/BromarBalkis/THEBIG5-SOEN341_Project_W26.git"
   },
   "devDependencies": {
-    "concurrently": "^9.2.1"
+    "autoprefixer": "^10.4.24",
+    "concurrently": "^9.2.1",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.19"
   }
 }
