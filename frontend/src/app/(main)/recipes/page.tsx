@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/dist/client/link";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface Recipe {
@@ -13,6 +14,8 @@ interface Recipe {
 }
 
 export default function RecipesPage() {
+  const router = useRouter();
+
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [search, setSearch] = useState("");
   const [difficulty, setDifficulty] = useState("");
@@ -113,12 +116,22 @@ export default function RecipesPage() {
         </select>
       </div>
 
-      <button
-        onClick={fetchRecipes}
-        className="mb-6 bg-green-500 text-white px-4 py-2 rounded"
-      >
-        Apply Filters
-      </button>
+      {/* BUTTON SECTION */}
+      <div className="flex gap-4 mb-6">
+        <button
+          onClick={fetchRecipes}
+          className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+        >
+          Apply Filters
+        </button>
+
+        <button
+          onClick={() => router.push("/recipes/create")}
+          className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+        >
+          Create Recipe
+        </button>
+      </div>
 
       {/* RECIPE GRID */}
       {recipes.length === 0 ? (
