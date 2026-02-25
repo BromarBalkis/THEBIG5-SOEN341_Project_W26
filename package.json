@@ -1,0 +1,17 @@
+{
+  "name": "thebig5-soen341_project_w26",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "backend": "npm run dev --prefix backend",
+    "frontend": "npm run dev --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BromarBalkis/THEBIG5-SOEN341_Project_W26.git"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
