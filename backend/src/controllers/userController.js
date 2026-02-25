@@ -1,19 +1,25 @@
+// backend/src/controllers/userController.js
 const prisma = require("../db/prisma");
 
-exports.me = async (req, res) => {
+exports.getMe = async (req, res) => {
   try {
-    const userId = req.user.userId;
-
     const user = await prisma.user.findUnique({
-      where: { id: userId },
-      select: { id: true, email: true, createdAt: true },
+      where: { id: req.user.userId },
+      select: {
+        id: true,
+        email: true,
+        fullName: true,
+        username: true,
+        createdAt: true,
+        profile: true,
+      },
     });
 
     if (!user) return res.status(404).json({ error: "User not found" });
 
-    return res.json({ user });
+    res.json(user);
   } catch (err) {
     console.error(err);
-    return res.status(500).json({ error: "Server error" });
+    res.status(500).json({ error: "Server error" });
   }
 };

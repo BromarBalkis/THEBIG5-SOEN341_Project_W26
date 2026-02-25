@@ -1,9 +1,13 @@
 'use client'
 
+import { useAuth } from '@/context/AuthContext';
 import Link from 'next/link'
 
 export default function DashboardPage() {
-  return (
+  const { currentUser } = useAuth();
+
+console.log("Current user:", currentUser);
+  return (  
     <div className="p-8 space-y-8">
       <div>
         <h1 className="text-3xl font-bold text-gray-900">
