@@ -158,22 +158,29 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     window.location.href = "/login"; // force redirect
   }, []);
 
-  const updateProfile = useCallback(
-    (data: Partial<User>) => {
-      if (!currentUser) {
-        return;
-      }
+  const updateProfile = useCallback(async (data: Partial<User>) => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
 
-      const updatedUser: User = {
-        ...currentUser,
-        ...data,
-      };
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/users/me`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
+      },
+    );
 
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedUser));
-      setCurrentUser(updatedUser);
-    },
-    [currentUser],
-  );
+    if (!response.ok) {
+      throw new Error("Failed to update profile");
+    }
+
+    const updatedUser = await response.json();
+    setCurrentUser(updatedUser);
+  }, []);
 
   const value: AuthContextType = {
     currentUser,

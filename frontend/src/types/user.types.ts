@@ -1,14 +1,14 @@
 export type DietaryPreference =
-  | 'Vegetarian'
-  | 'Vegan'
-  | 'Keto'
-  | 'Paleo'
-  | 'Gluten-Free'
-  | 'Dairy-Free'
-  | 'Low-Carb'
-  | 'Halal'
-  | 'Kosher'
-  | 'None';
+  | "Vegetarian"
+  | "Vegan"
+  | "Keto"
+  | "Paleo"
+  | "Gluten-Free"
+  | "Dairy-Free"
+  | "Low-Carb"
+  | "Halal"
+  | "Kosher"
+  | "None";
 
 export interface User {
   id: string;
@@ -16,7 +16,7 @@ export interface User {
   username: string;
   email: string;
   avatar?: string;
-  dietaryPreferences: DietaryPreference[];
+  dietaryPreferences: string[];
   allergies: string[];
   createdAt: Date;
 }
