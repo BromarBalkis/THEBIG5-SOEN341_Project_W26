@@ -176,3 +176,18 @@ exports.deleteRecipe = async (req, res) => {
     res.status(500).json({ message: "Failed to delete recipe" });
   }
 };
+
+exports.getRecipeCount = async (req, res) => {
+  try {
+    const userId = req.user.userId;
+
+    const count = await prisma.recipe.count({
+      where: { userId },
+    });
+
+    res.json({ count });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to get count" });
+  }
+};
