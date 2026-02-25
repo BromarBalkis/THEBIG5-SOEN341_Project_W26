@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, {
   createContext,
@@ -7,8 +7,8 @@ import React, {
   useEffect,
   useCallback,
   ReactNode,
-} from 'react';
-import type { User, RegisterData } from '@/types';
+} from "react";
+import type { User, RegisterData } from "@/types";
 
 export interface AuthContextType {
   currentUser: User | null;
@@ -20,7 +20,7 @@ export interface AuthContextType {
   updateProfile(data: Partial<User>): void;
 }
 
-const STORAGE_KEY = 'mealmajor_user';
+const STORAGE_KEY = "mealmajor_user";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -30,121 +30,150 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-  const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
-  if (!token) {
-    setIsLoading(false);
-    return;
-  }
-
-  async function fetchUser() {
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/users/me`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Invalid token");
-      }
-
-      const user = await response.json();
-      setCurrentUser(user);
-      setIsAuthenticated(true);
-    } catch (err) {
-      localStorage.removeItem("token");
-      document.cookie = "mealmajor_authenticated=; path=/; max-age=0";
-      setCurrentUser(null);
-      setIsAuthenticated(false);
-    } finally {
+    if (!token) {
       setIsLoading(false);
-    }
-  }
-
-  fetchUser();
-}, []);
-
- const login = useCallback(async (email: string, password: string): Promise<boolean> => {
-  try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      }
-    );
-
-    if (!response.ok) {
-      return false;
-    }
-
-    const data = await response.json();
-
-    // Save JWT
-    localStorage.setItem("token", data.token);
-    document.cookie = "mealmajor_authenticated=true; path=/"
-    setIsAuthenticated(true);
-
-    return true;
-  } catch (error) {
-    console.error("Login failed:", error);
-    return false;
-  }
-}, []);
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
-const register = useCallback(async (data: RegisterData): Promise<boolean> => {
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    const result = await response.json();
-
-    if (!response.ok) {
-      throw new Error(result.error || "Registration failed");
-    }
-
-    return true; // success → redirect to login
-  } catch (error) {
-    console.error(error);
-    return false;
-  }
-}, []);
-  
-
-  const logout = useCallback(() => {
-  localStorage.removeItem("token");
-  document.cookie = "mealmajor_authenticated=; path=/; max-age=0"
-  setCurrentUser(null);
-  setIsAuthenticated(false);
-}, []);
-
-  const updateProfile = useCallback((data: Partial<User>) => {
-    if (!currentUser) {
       return;
     }
 
-    const updatedUser: User = {
-      ...currentUser,
-      ...data,
-    };
+    async function fetchUser() {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/users/me`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        );
 
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedUser));
-    setCurrentUser(updatedUser);
-  }, [currentUser]);
+        if (!response.ok) {
+          throw new Error("Invalid token");
+        }
+
+        const user = await response.json();
+        setCurrentUser(user);
+        setIsAuthenticated(true);
+      } catch (err) {
+        localStorage.removeItem("token");
+        document.cookie = "mealmajor_authenticated=; path=/; max-age=0";
+        setCurrentUser(null);
+        setIsAuthenticated(false);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchUser();
+  }, []);
+
+  const login = useCallback(
+    async (email: string, password: string): Promise<boolean> => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+          },
+        );
+
+        if (!response.ok) {
+          return false;
+        }
+
+        const data = await response.json();
+
+        // Save JWT
+        localStorage.setItem("token", data.token);
+        document.cookie = "mealmajor_authenticated=true; path=/";
+
+        // FETCH USER IMMEDIATELY
+        const userResponse = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/users/me`,
+          {
+            headers: {
+              Authorization: `Bearer ${data.token}`,
+            },
+          },
+        );
+
+        if (!userResponse.ok) {
+          throw new Error("Failed to fetch user");
+        }
+
+        const user = await userResponse.json();
+
+        setCurrentUser(user);
+        setIsAuthenticated(true);
+
+        return true;
+      } catch (error) {
+        console.error("Login failed:", error);
+        return false;
+      }
+    },
+    [],
+  );
+
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+  const register = useCallback(async (data: RegisterData): Promise<boolean> => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        },
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Registration failed");
+      }
+
+      return true; // success → redirect to login
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  }, []);
+
+  const logout = useCallback(() => {
+    localStorage.removeItem("token");
+    document.cookie = "mealmajor_authenticated=; path=/; max-age=0";
+
+    setCurrentUser(null);
+    setIsAuthenticated(false);
+
+    window.location.href = "/login"; // force redirect
+  }, []);
+
+  const updateProfile = useCallback(
+    (data: Partial<User>) => {
+      if (!currentUser) {
+        return;
+      }
+
+      const updatedUser: User = {
+        ...currentUser,
+        ...data,
+      };
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedUser));
+      setCurrentUser(updatedUser);
+    },
+    [currentUser],
+  );
 
   const value: AuthContextType = {
     currentUser,
@@ -156,15 +185,13 @@ const register = useCallback(async (data: RegisterData): Promise<boolean> => {
     updateProfile,
   };
 
-  return (
-    <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {
   const context = useContext(AuthContext);
   if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 }
