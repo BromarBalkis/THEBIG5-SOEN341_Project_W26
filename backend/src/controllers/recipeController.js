@@ -41,24 +41,77 @@ exports.getRecipes = async (req, res) => {
   try {
     const userId = req.user.userId;
 
+    const { search, difficulty, maxTime, maxCost, tag } = req.query;
+
+    const filters = {
+      userId,
+    };
+
+    if (search) {
+      filters.OR = [
+        {
+          title: {
+            contains: search,
+            mode: "insensitive",
+          },
+        },
+        {
+          description: {
+            contains: search,
+            mode: "insensitive",
+          },
+        },
+      ];
+    }
+
+    if (difficulty) {
+      filters.difficulty = difficulty;
+    }
+
+    if (maxTime) {
+      filters.prepTime = {
+        lte: Number(maxTime),
+      };
+    }
+
+    if (maxCost) {
+      filters.cost = {
+        lte: Number(maxCost),
+      };
+    }
+
+    if (tag) {
+      filters.dietaryTags = {
+        has: tag,
+      };
+    }
+
     const recipes = await prisma.recipe.findMany({
-      where: { userId },
+      where: filters,
       orderBy: { createdAt: "desc" },
     });
 
     res.json(recipes);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Failed to fetch recipes" });
   }
 };
+
 exports.getRecipeById = async (req, res) => {
   try {
+    const userId = req.user.userId;
+
     const recipe = await prisma.recipe.findUnique({
       where: { id: req.params.id },
     });
 
     if (!recipe) {
       return res.status(404).json({ message: "Recipe not found" });
+    }
+
+    if (recipe.userId !== userId) {
+      return res.status(403).json({ message: "Not authorized" });
     }
 
     res.json(recipe);
@@ -69,19 +122,51 @@ exports.getRecipeById = async (req, res) => {
 
 exports.updateRecipe = async (req, res) => {
   try {
+    const userId = req.user.userId;
+
+    const recipe = await prisma.recipe.findUnique({
+      where: { id: req.params.id },
+    });
+
+    if (!recipe) {
+      return res.status(404).json({ message: "Recipe not found" });
+    }
+
+    if (recipe.userId !== userId) {
+      return res.status(403).json({ message: "Not authorized" });
+    }
+
+    // Remove unsafe fields (important for Prisma)
+    const { id, userId: _, createdAt, ...safeData } = req.body;
+
     const updated = await prisma.recipe.update({
       where: { id: req.params.id },
-      data: req.body,
+      data: safeData,
     });
 
     res.json(updated);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Failed to update recipe" });
   }
 };
 
 exports.deleteRecipe = async (req, res) => {
   try {
+    const userId = req.user.userId;
+
+    const recipe = await prisma.recipe.findUnique({
+      where: { id: req.params.id },
+    });
+
+    if (!recipe) {
+      return res.status(404).json({ message: "Recipe not found" });
+    }
+
+    if (recipe.userId !== userId) {
+      return res.status(403).json({ message: "Not authorized" });
+    }
+
     await prisma.recipe.delete({
       where: { id: req.params.id },
     });
