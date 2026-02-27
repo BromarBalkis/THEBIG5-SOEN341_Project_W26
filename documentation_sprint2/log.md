@@ -10,7 +10,7 @@
 |---|---:|---:|---:|---|
 | Kareem Dadouche | 10.0 | 3.0 | 7.0 | CI pipeline (solo), 1 acceptance test (solo), contributions to recipe searching/filtering, Task03 UI work, Task09 unit test support, minor front-end work |
 | Omar Balkis | 9.5 | 3.5 | 6.0 | Auth (solo), contributions to dashboard and profile pages, work on User story 5, project overview |
-| Mcwill Buikpor | 10 | 4 | 6.0 | Auth (solo), worked on dashboard and profile pages, recipe creation and deletion, project overview |
+| Mcwill Buikpor | 20 | 15.0 | 5.0 | Auth (solo), worked on frontend, dashboard and profile pages, recipe creation and deletion, project overview |
 | Daniel Yota | 23.0 | 15.0 | 8.0 | Sprint 2 skeleton setup, backend (DB + auth), frontend page implementation, sprint coordination, workload distribution, meeting facilitation |
 | Saib Merabet | 18.0 | 12.0 | 6.0 | Connecting backend to frontend, backend (DB + auth), creating everything needed in mangodb cluster (users, profiles etc) and connecting it to the frontend.
 
