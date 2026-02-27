@@ -26,11 +26,11 @@
 | 2026-02-20 | 15:00–17:00 | 2.0h | Pair/Team | Task09 (#16) | Supported unit tests for auth logic (test cases, fixing failing tests, improving stability). |
 
 Daniel -Timestamp Log
-Date	Start–End	Time Spent	Type (Solo/Pair/Team)	Issue/Task	Activity Details
-2026-02-12	13:00–16:00	3.0h	Solo	Sprint 2 Skeleton	Built initial backend and frontend skeleton implementation; prepared base structure before distributing tasks.
-2026-02-12	16:00–18:00	2.0h	Team	Sprint Planning	Organized and led Sprint 2 kickoff meeting; presented skeleton; distributed workload and defined responsibilities.
-2026-02-14	18:00–22:00	4.0h	Solo	Database Setup	Designed and configured database schema; implemented models and ensured backend integration.
-2026-02-15	16:00–20:00	4.0h	Solo	Authentication Implementation	Developed register and login endpoints; implemented validation and integrated authentication with database.
-2026-02-16	17:00–21:00	4.0h	Solo	Frontend Pages	Implemented main frontend pages (register, login, dashboard); connected frontend to backend APIs.
-2026-02-18	17:00–20:00	3.0h	Team	Progress Meeting	Organized and led follow-up meeting; reviewed each member’s work; resolved integration and deadline concerns.
-2026-02-21	14:00–17:00	3.0h	Team	Integration & Coordination	Assisted teammates with debugging and integration; ensured participation and sprint completion readiness.
+|Date	Start–End |	Time Spent |	Type (Solo/Pair/Team) |	Issue/Task | Activity Details
+|2026-02-12 |	13:00–16:00 |	3.0h |	Solo |	Sprint 2 Skeleton	Built initial backend and frontend skeleton implementation; prepared base structure before distributing tasks.
+|2026-02-12 |	16:00–18:00 |	2.0h |Team |	Sprint Planning	Organized and led Sprint 2 kickoff meeting; presented skeleton; distributed workload and defined responsibilities.
+|2026-02-14 |	18:00–22:00 |	4.0h |	Solo |	Database Setup	Designed and configured database schema; implemented models and ensured backend integration.
+|2026-02-15 |	16:00–20:00 |	4.0h |	Solo |	Authentication Implementation	Developed register and login endpoints; implemented validation and integrated authentication with database.
+|2026-02-16 |	17:00–21:00 |	4.0h | Solo |	Frontend Pages	Implemented main frontend pages (register, login, dashboard); connected frontend to backend APIs.
+|2026-02-18 |	17:00–20:00 |	3.0h | 	Team |	Progress Meeting	Organized and led follow-up meeting; reviewed each member’s work; resolved integration and deadline concerns.
+|2026-02-21 |	14:00–17:00 |	3.0h |	Team |	Integration & Coordination	Assisted teammates with debugging and integration; ensured participation and sprint completion readiness.
