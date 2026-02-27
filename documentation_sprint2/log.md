@@ -12,6 +12,7 @@
 | Omar Balkis | 9.5 | 3.5 | 6.0 | Auth (solo), contributions to dashboard and profile pages, work on User story 5, project overview |
 | Mcwill Buikpor | 10 | 4 | 6.0 | Auth (solo), worked on dashboard and profile pages, recipe creation and deletion, project overview |
 | Daniel Yota | 23.0 | 15.0 | 8.0 | Sprint 2 skeleton setup, backend (DB + auth), frontend page implementation, sprint coordination, workload distribution, meeting facilitation |
+| Saib Merabet | 18.0 | 12.0 | 6.0 | Connecting backend to frontend, backend (DB + auth), creating everything needed in mangodb cluster (users, profiles etc) and connecting it to the frontend.
 
 
 ## Detailed Timestamped Log 
