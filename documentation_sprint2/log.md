@@ -8,11 +8,9 @@
 ## Summary (Totals)
 | Team Member | Total Hours | Solo Hours | Pair/Team Hours | Key Contributions |
 |---|---:|---:|---:|---|
-| Kareem Dadouche | 10.0 | 2.0 | 8.0 | CI pipeline (solo), 1 acceptance test (solo), contributions to recipe searching/filtering, Task03 UI work, Task09 unit test support, minor front-end work |
+| Kareem Dadouche | 10.0 | 3.0 | 7.0 | CI pipeline (solo), 1 acceptance test (solo), contributions to recipe searching/filtering, Task03 UI work, Task09 unit test support, minor front-end work |
 
-> Notes:
-> - Solo items were completed independently.
-> - Pair/Team items were completed collaboratively (planning, implementation support, review, verification).
+
 
 ## Detailed Timestamped Log (Rubric-Focused)
 | Date | Start–End | Time Spent | Type (Solo/Pair/Team) | Issue/Task | Activity Details |
