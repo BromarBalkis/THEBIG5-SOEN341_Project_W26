@@ -10,6 +10,7 @@
 |---|---:|---:|---:|---|
 | Kareem Dadouche | 10.0 | 3.0 | 7.0 | CI pipeline (solo), 1 acceptance test (solo), contributions to recipe searching/filtering, Task03 UI work, Task09 unit test support, minor front-end work |
 | Omar Balkis | 9.5 | 3.5 | 6.0 | Auth (solo), contributions to dashboard and profile pages, work on User story 5, project overview |
+| Mcwill Buikpor | 10 | 4 | 6.0 | Auth (solo), worked on dashboard and profile pages, recipe creation and deletion, project overview |
 
 
 
