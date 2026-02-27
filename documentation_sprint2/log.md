@@ -35,3 +35,29 @@
 |2026-02-16 |	17:00–21:00 |	4.0h | Solo |	Frontend Pages	Implemented main frontend pages (register, login, dashboard); connected frontend to backend APIs.
 |2026-02-18 |	17:00–20:00 |	3.0h | 	Team |	Progress Meeting	Organized and led follow-up meeting; reviewed each member’s work; resolved integration and deadline concerns.
 |2026-02-21 |	14:00–17:00 |	3.0h |	Team |	Integration & Coordination	Assisted teammates with debugging and integration; ensured participation and sprint completion readiness.
+
+## Detailed Timestamped Log
+
+| Date | Start-End | Time Spent | Type (Solo/Pair/Team) | Issue/Task | Activity Details |
+
+| 2026-02-17 | 14:00-18:30 | 4.5h | **Solo** | Frontend Setup | Initialized Next.js 14 project with TypeScript, Tailwind CSS, and App Router; configured custom theme with primary green (#10B981) and design system. |
+
+| 2026-02-17 | 18:30-20:00 | 1.5h | **Solo** | Type System | Created complete TypeScript type definitions across 5 files (user, recipe, meal-plan, grocery types); established type safety foundation for entire frontend. |
+
+| 2026-02-18 | 09:00-11:30 | 2.5h | **Solo** | Utils & Constants | Implemented utility functions (formatTime, formatCost, date helpers) and app constants; created comprehensive mock data with 6 realistic recipes for development. |
+
+| 2026-02-18 | 11:30-13:00 | 1.5h | **Solo** | State Management | Built React Context providers (AuthContext, AppContext, ToastContext) for global state management with localStorage persistence. |
+
+| 2026-02-18 | 14:00-16:30 | 2.5h | **Solo** | UI Component Library | Created 10 reusable UI components (Button, Input, Card, Badge, Modal, Toast, LoadingSpinner, EmptyState, ConfirmModal) with Tailwind styling and accessibility. |
+
+| 2026-02-18 | 16:30-18:00 | 1.5h | **Solo** | Layout Components | Implemented app layout structure including Header, Sidebar, and MobileNav with responsive design; established routing architecture. |
+
+| 2026-02-19 | 10:00-12:30 | 2.5h | **Solo** | Authentication UI | Built complete login and register pages with form validation, password strength indicators, and error handling; integrated with AuthContext for mock authentication. |
+
+| 2026-02-19 | 13:00-15:00 | 2.0h | **Solo** | Dashboard Page | Created dashboard with stats cards, quick actions, meal plan preview, and recent recipes display; implemented responsive grid layouts. |
+
+| 2026-02-19 | 15:00-16:30 | 1.5h | **Solo** | Routing & Middleware | Set up Next.js route protection middleware with cookie-based authentication checks; configured auth and protected route groups. |
+
+| 2026-02-20 | 09:00-10:30 | 1.5h | **Solo** | Debugging & Integration | Troubleshooting: resolved middleware conflicts, fixed auth flow, debugged context provider integration, and corrected routing issues. |
+
+| 2026-02-20 | 10:30-11:00 | 0.5h | **Solo** | Git Management | Managed branch conflicts between React+Vite and Next.js versions; coordinated with team on framework decision and branch strategy. |
