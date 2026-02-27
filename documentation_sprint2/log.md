@@ -25,7 +25,8 @@
 | 2026-02-18 | 17:00–19:00 | 2.0h | Pair/Team | Task03_02 (#18) | Contributed to login/logout UI work (screen flow/components) and reviewed behavior against requirements. |
 | 2026-02-20 | 15:00–17:00 | 2.0h | Pair/Team | Task09 (#16) | Supported unit tests for auth logic (test cases, fixing failing tests, improving stability). |
 
-Daniel -Timestamp Log
+## Daniel -Timestamp Log
+|---|---|---:|---|---|---|
 |Date	Start–End |	Time Spent |	Type (Solo/Pair/Team) |	Issue/Task | Activity Details
 |2026-02-12 |	13:00–16:00 |	3.0h |	Solo |	Sprint 2 Skeleton	Built initial backend and frontend skeleton implementation; prepared base structure before distributing tasks.
 |2026-02-12 |	16:00–18:00 |	2.0h |Team |	Sprint Planning	Organized and led Sprint 2 kickoff meeting; presented skeleton; distributed workload and defined responsibilities.
