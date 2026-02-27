@@ -36,7 +36,6 @@
 |2026-02-18 |	17:00–20:00 |	3.0h | 	Team |	Progress Meeting	Organized and led follow-up meeting; reviewed each member’s work; resolved integration and deadline concerns.
 |2026-02-21 |	14:00–17:00 |	3.0h |	Team |	Integration & Coordination	Assisted teammates with debugging and integration; ensured participation and sprint completion readiness.
 
-## Detailed Timestamped Log
 
 ## Detailed Timestamped Log - Mcwill
 
