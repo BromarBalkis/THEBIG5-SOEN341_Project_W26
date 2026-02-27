@@ -10,8 +10,6 @@
 |---|---:|---:|---:|---|
 | Kareem Dadouche | 10.0 | 3.0 | 7.0 | CI pipeline (solo), 1 acceptance test (solo), contributions to recipe searching/filtering, Task03 UI work, Task09 unit test support, minor front-end work |
 | Omar Balkis | 9.5 | 3.5 | 6.0 | Auth (solo), contributions to dashboard and profile pages, work on User story 5, project overview |
-| Name | Tasks Completed | Hours (Solo) | Hours (Pair/Team) | Contribution Summary |
-|---|---|---|---|---|
 | Mcwill Buikpor | 22.0 | 17.0 | 5.0 | Frontend architecture (solo): Initialized Next.js 14 project with TypeScript and Tailwind CSS; built complete type system (5 files) and state management with React Context API; created 10 reusable UI components with accessibility; implemented authentication flow (login/register pages with validation); developed dashboard page with stats cards and responsive layouts; established routing architecture with middleware protection; created mock data system with 6 recipes; resolved integration issues and managed Git branch conflicts. |
 | Daniel Yota | 23.0 | 15.0 | 8.0 | Sprint 2 skeleton setup, backend (DB + auth), frontend page implementation, sprint coordination, workload distribution, meeting facilitation |
 | Saib Merabet | 18.0 | 12.0 | 6.0 | Connecting backend to frontend, backend (DB + auth), creating everything needed in mangodb cluster (users, profiles etc) and connecting it to the frontend.
@@ -40,7 +38,7 @@
 
 ## Detailed Timestamped Log
 
-## Detailed Timestamped Log
+## Detailed Timestamped Log - Mcwill
 
 | Date | Start-End | Time Spent | Type (Solo/Pair/Team) | Issue/Task | Activity Details |
 |---|---|---|---|---|---|
