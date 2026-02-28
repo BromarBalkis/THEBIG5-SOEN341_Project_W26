@@ -12,3 +12,4 @@ backend/node_modules
 
 /generated/prisma
 testPrisma.js
+
