@@ -6,9 +6,10 @@ Thumbs.db
 .idea/
 .vscode/
 
-# Logs
+# Logs (but allow documentation logs)
 logs/
 *.log
+!documentation/**/logs/
 
 # Root node
 node_modules/
@@ -17,3 +18,7 @@ node_modules/
 .env
 .env.local
 .env.*.local
+
+# Claude Code files
+.claude/
+CLAUDE.md
