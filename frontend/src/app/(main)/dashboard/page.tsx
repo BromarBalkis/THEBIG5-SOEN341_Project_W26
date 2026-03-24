@@ -1,41 +1,16 @@
 "use client";
 
 import { useAuth } from "@/context/AuthContext";
-import { useEffect, useState } from "react";
+import { useApp } from "@/context/AppContext";
+import { useMealPlan } from "@/context/MealPlanContext";
 import Link from "next/link";
 
 export default function DashboardPage() {
   const { currentUser, isLoading } = useAuth();
+  const { recipes, groceryList } = useApp();
+  const { mealPlan } = useMealPlan();
 
-  const [recipeCount, setRecipeCount] = useState<number>(0);
-  const [loadingStats, setLoadingStats] = useState<boolean>(true);
-
-  useEffect(() => {
-    const fetchStats = async () => {
-      const token = localStorage.getItem("token");
-
-      try {
-        const res = await fetch("http://localhost:5000/api/recipes/count", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        if (!res.ok) throw new Error("Failed to fetch stats");
-
-        const data = await res.json();
-        setRecipeCount(data.count);
-      } catch (error) {
-        console.error("Error fetching stats:", error);
-      } finally {
-        setLoadingStats(false);
-      }
-    };
-
-    fetchStats();
-  }, []);
-
-  if (isLoading || loadingStats) return null;
+  if (isLoading) return null;
 
   return (
     <div className="max-w-7xl mx-auto p-8 space-y-8">
@@ -52,7 +27,7 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Meals Planned (placeholder for now) */}
         <div className="bg-card rounded-xl shadow-sm hover:shadow-md transition border p-6">
-          <p className="text-4xl font-bold text-primary tracking-tight">0</p>
+          <p className="text-4xl font-bold text-primary tracking-tight">{mealPlan?.entries.length ?? 0}</p>
           <p className="text-sm text-gray-500 mt-1">Meals Planned</p>
           <Link
             href="/meal-planner"
@@ -62,10 +37,10 @@ export default function DashboardPage() {
           </Link>
         </div>
 
-        {/* Recipes Saved (REAL COUNT) */}
+        {/* Recipes Saved */}
         <div className="bg-card rounded-xl shadow-sm hover:shadow-md transition border p-6">
           <p className="text-4xl font-bold text-primary tracking-tight">
-            {recipeCount}
+            {recipes.length}
           </p>
           <p className="text-sm text-gray-500 mt-1">Recipes Saved</p>
           <Link
@@ -76,9 +51,9 @@ export default function DashboardPage() {
           </Link>
         </div>
 
-        {/* Grocery Items (placeholder for now) */}
+        {/* Grocery Items */}
         <div className="bg-card rounded-xl shadow-sm hover:shadow-md transition border p-6">
-          <p className="text-4xl font-bold text-primary tracking-tight">0</p>
+          <p className="text-4xl font-bold text-primary tracking-tight">{groceryList.length}</p>
           <p className="text-sm text-gray-500 mt-1">Grocery Items</p>
           <Link
             href="/grocery-list"

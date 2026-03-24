@@ -2,7 +2,10 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useApp } from "@/context/AppContext";
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
 interface Recipe {
   id: string;
@@ -11,55 +14,96 @@ interface Recipe {
   prepTime: number;
   difficulty: string;
   cost: number;
+  dietaryTags?: string[];
 }
 
 export default function RecipesPage() {
   const router = useRouter();
+  const { recipes: mockRecipes } = useApp();
 
-  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  // Map AppContext mock recipes to the local Recipe shape used by this page
+  const mockMapped = useMemo<Recipe[]>(
+    () =>
+      mockRecipes.map((r) => ({
+        id: r.id,
+        title: r.title,
+        description: r.description,
+        prepTime: r.prepTime,
+        difficulty: r.difficulty,
+        cost: r.costPerServing,
+        dietaryTags: r.dietaryTags as string[],
+      })),
+    [mockRecipes]
+  );
+
+  const [apiRecipes, setApiRecipes] = useState<Recipe[] | null>(null);
   const [search, setSearch] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [maxTime, setMaxTime] = useState("");
   const [maxCost, setMaxCost] = useState("");
   const [tag, setTag] = useState("");
 
+  // Use API recipes when available, otherwise fall back to mock data
+  const allRecipes = apiRecipes ?? mockMapped;
+
+  // Client-side filtering (used when no backend, or as the filter result source)
+  const recipes = useMemo(() => {
+    return allRecipes.filter((r) => {
+      if (search && !r.title.toLowerCase().includes(search.toLowerCase()) &&
+          !(r.description ?? "").toLowerCase().includes(search.toLowerCase())) return false;
+      if (difficulty && r.difficulty !== difficulty) return false;
+      if (maxTime && r.prepTime > Number(maxTime)) return false;
+      if (maxCost && r.cost > Number(maxCost)) return false;
+      if (tag && !(r.dietaryTags ?? []).includes(tag)) return false;
+      return true;
+    });
+  }, [allRecipes, search, difficulty, maxTime, maxCost, tag]);
+
   const fetchRecipes = async () => {
     const token = localStorage.getItem("token");
+    if (!token) return; // no token → keep using mock data
 
-    const query = new URLSearchParams({
-      search,
-      difficulty,
-      maxTime,
-      maxCost,
-      tag,
-    }).toString();
+    try {
+      const query = new URLSearchParams(
+        Object.fromEntries(
+          Object.entries({ search, difficulty, maxTime, maxCost, tag }).filter(([, v]) => v !== "")
+        )
+      ).toString();
 
-    const res = await fetch(`http://localhost:5000/api/recipes?${query}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+      const res = await fetch(`${API_URL}/api/recipes?${query}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
-    const data = await res.json();
-    setRecipes(data);
+      if (!res.ok) return;
+      const data = await res.json();
+      if (Array.isArray(data)) setApiRecipes(data);
+    } catch {
+      // API unreachable — client-side filtering of mock data already handles this
+    }
   };
 
   useEffect(() => {
     fetchRecipes();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleDelete = async (id: string) => {
     const token = localStorage.getItem("token");
 
-    const res = await fetch(`http://localhost:5000/api/recipes/${id}`, {
+    if (!token) {
+      // Local delete from mock view
+      setApiRecipes((prev) =>
+        prev ? prev.filter((r) => r.id !== id) : mockMapped.filter((r) => r.id !== id)
+      );
+      return;
+    }
+
+    const res = await fetch(`${API_URL}/api/recipes/${id}`, {
       method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      headers: { Authorization: `Bearer ${token}` },
     });
 
     if (res.ok) {
-      setRecipes((prev) => prev.filter((r) => r.id !== id));
+      setApiRecipes((prev) => (prev ? prev.filter((r) => r.id !== id) : null));
     }
   };
 

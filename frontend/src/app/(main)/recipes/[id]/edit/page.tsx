@@ -10,6 +10,10 @@ interface Recipe {
   prepTime: number;
   difficulty: string;
   cost: number;
+  nutritionCalories?: number | null;
+  nutritionProtein?: number | null;
+  nutritionCarbs?: number | null;
+  nutritionFat?: number | null;
 }
 
 export default function EditRecipePage() {
@@ -46,6 +50,8 @@ export default function EditRecipePage() {
     }
   }, [id, router]);
 
+  const numericFields = ["prepTime", "cost", "nutritionCalories", "nutritionProtein", "nutritionCarbs", "nutritionFat"];
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!recipe) return;
 
@@ -53,7 +59,7 @@ export default function EditRecipePage() {
 
     setRecipe({
       ...recipe,
-      [name]: name === "prepTime" || name === "cost" ? Number(value) : value,
+      [name]: numericFields.includes(name) ? (value === "" ? null : Number(value)) : value,
     });
   };
 
@@ -131,6 +137,44 @@ export default function EditRecipePage() {
           placeholder="Cost"
           className="w-full border p-2 rounded"
         />
+
+        <div className="pt-2">
+          <p className="text-sm font-semibold text-gray-600 mb-2">Nutrition (optional)</p>
+          <div className="grid grid-cols-2 gap-3">
+            <input
+              type="number"
+              name="nutritionCalories"
+              value={recipe.nutritionCalories ?? ""}
+              onChange={handleChange}
+              placeholder="Calories (kcal)"
+              className="w-full border p-2 rounded"
+            />
+            <input
+              type="number"
+              name="nutritionProtein"
+              value={recipe.nutritionProtein ?? ""}
+              onChange={handleChange}
+              placeholder="Protein (g)"
+              className="w-full border p-2 rounded"
+            />
+            <input
+              type="number"
+              name="nutritionCarbs"
+              value={recipe.nutritionCarbs ?? ""}
+              onChange={handleChange}
+              placeholder="Carbs (g)"
+              className="w-full border p-2 rounded"
+            />
+            <input
+              type="number"
+              name="nutritionFat"
+              value={recipe.nutritionFat ?? ""}
+              onChange={handleChange}
+              placeholder="Fat (g)"
+              className="w-full border p-2 rounded"
+            />
+          </div>
+        </div>
 
         <button
           type="submit"

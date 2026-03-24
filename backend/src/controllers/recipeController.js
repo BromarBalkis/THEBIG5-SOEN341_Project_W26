@@ -14,6 +14,10 @@ exports.createRecipe = async (req, res) => {
       difficulty,
       cost,
       dietaryTags,
+      nutritionCalories,
+      nutritionProtein,
+      nutritionCarbs,
+      nutritionFat,
     } = req.body;
 
     const recipe = await prisma.recipe.create({
@@ -26,6 +30,10 @@ exports.createRecipe = async (req, res) => {
         difficulty,
         cost,
         dietaryTags,
+        nutritionCalories: nutritionCalories ? Number(nutritionCalories) : null,
+        nutritionProtein: nutritionProtein ? Number(nutritionProtein) : null,
+        nutritionCarbs: nutritionCarbs ? Number(nutritionCarbs) : null,
+        nutritionFat: nutritionFat ? Number(nutritionFat) : null,
         userId,
       },
     });

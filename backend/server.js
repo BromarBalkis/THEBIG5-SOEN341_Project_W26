@@ -5,6 +5,7 @@ const cors = require("cors");
 const authRoutes = require("./src/routes/auth");
 const userRoutes = require("./src/routes/users");
 const recipeRoutes = require("./src/routes/recipes");
+const mealPlanRoutes = require("./src/routes/mealPlans");
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/recipes", recipeRoutes);
+app.use("/api/meal-plans", mealPlanRoutes);
 
 const PORT = Number(process.env.PORT) || 5000;
 

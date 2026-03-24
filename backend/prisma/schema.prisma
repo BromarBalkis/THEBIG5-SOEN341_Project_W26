@@ -15,8 +15,9 @@ model User {
   passwordHash String
   createdAt    DateTime @default(now())
 
-  profile  Profile?
-  recipes  Recipe[]  
+  profile   Profile?
+  recipes   Recipe[]
+  mealPlans MealPlan[]
 }
 
 model Profile {
@@ -29,17 +30,38 @@ model Profile {
 }
 
 model Recipe {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  title       String
-  description String?
-  ingredients String[]
-  steps       String[]
-  prepTime    Int
-  difficulty  String
-  cost        Float
-  dietaryTags String[]
-  createdAt   DateTime @default(now())
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  title             String
+  description       String?
+  ingredients       String[]
+  steps             String[]
+  prepTime          Int
+  difficulty        String
+  cost              Float
+  dietaryTags       String[]
+  nutritionCalories Float?
+  nutritionProtein  Float?
+  nutritionCarbs    Float?
+  nutritionFat      Float?
+  createdAt         DateTime @default(now())
 
   userId String @db.ObjectId
   user   User   @relation(fields: [userId], references: [id])
+}
+
+model MealPlan {
+  id      String          @id @default(auto()) @map("_id") @db.ObjectId
+  weekOf  String
+  userId  String          @db.ObjectId
+  user    User            @relation(fields: [userId], references: [id])
+  entries MealPlanEntry[]
+}
+
+model MealPlanEntry {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  mealPlanId String   @db.ObjectId
+  mealPlan   MealPlan @relation(fields: [mealPlanId], references: [id])
+  recipeId   String   @db.ObjectId
+  day        String
+  mealType   String
 }

@@ -15,6 +15,10 @@ export default function CreateRecipePage() {
     difficulty: "",
     cost: "",
     dietaryTags: "",
+    nutritionCalories: "",
+    nutritionProtein: "",
+    nutritionCarbs: "",
+    nutritionFat: "",
   });
 
   const handleChange = (
@@ -43,6 +47,10 @@ export default function CreateRecipePage() {
         difficulty: form.difficulty,
         cost: Number(form.cost),
         dietaryTags: form.dietaryTags.split(",").map((d) => d.trim()),
+        nutritionCalories: form.nutritionCalories ? Number(form.nutritionCalories) : null,
+        nutritionProtein: form.nutritionProtein ? Number(form.nutritionProtein) : null,
+        nutritionCarbs: form.nutritionCarbs ? Number(form.nutritionCarbs) : null,
+        nutritionFat: form.nutritionFat ? Number(form.nutritionFat) : null,
       }),
     });
 
@@ -112,6 +120,40 @@ export default function CreateRecipePage() {
           onChange={handleChange}
           className="w-full border p-2 rounded"
         />
+
+        <div className="pt-2">
+          <p className="text-sm font-semibold text-gray-600 mb-2">Nutrition (optional)</p>
+          <div className="grid grid-cols-2 gap-3">
+            <input
+              name="nutritionCalories"
+              type="number"
+              placeholder="Calories (kcal)"
+              onChange={handleChange}
+              className="w-full border p-2 rounded"
+            />
+            <input
+              name="nutritionProtein"
+              type="number"
+              placeholder="Protein (g)"
+              onChange={handleChange}
+              className="w-full border p-2 rounded"
+            />
+            <input
+              name="nutritionCarbs"
+              type="number"
+              placeholder="Carbs (g)"
+              onChange={handleChange}
+              className="w-full border p-2 rounded"
+            />
+            <input
+              name="nutritionFat"
+              type="number"
+              placeholder="Fat (g)"
+              onChange={handleChange}
+              className="w-full border p-2 rounded"
+            />
+          </div>
+        </div>
 
         <button
           type="submit"
