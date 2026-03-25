@@ -2,7 +2,7 @@
 
 ## Summary
 
-- **Total Hours:** 15 hours
+- **Total Hours:** 16 hours
 - **Primary Role:** Frontend Developer
 - **Features Implemented:** Weekly Meal Planner, Weekly Macro Breakdown
 
