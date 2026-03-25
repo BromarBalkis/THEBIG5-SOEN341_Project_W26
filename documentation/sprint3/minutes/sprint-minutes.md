@@ -241,6 +241,8 @@ Technical implementation quality was reviewed. The code followed established pat
 
 The team verified that all Sprint 3 GitHub issues (56-63) were created with proper formatting, story points, due dates, and acceptance criteria. The sprint plan table was complete and accurate.
 
+
+
 ### Demo Results
 
 **Feature:** Weekly Calorie & Macro Breakdown
@@ -296,18 +298,24 @@ All deliverables met or exceeded requirements.
 - Documentation could be done incrementally rather than at sprint end
 
 ### Action Items
-
-- Mcwill to finalize contribution log with all hours by March 28
+- Mcwill to finalize contribution log with all hours by March 27
 - Mcwill to close old Grocery List issues (48-52) with explanation by March 25
-- All team members to review and approve meeting minutes by March 28
-- All team members to prepare for Sprint 3 demo presentation by March 28
-- Team to begin planning Sprint 4 scope by March 28
+- All team members to review and approve meeting minutes by March 27
+- All team members to prepare for Sprint 3 demo presentation by March 27
+- Team to begin planning Sprint 4 scope by March 7
 
+Team member updates:
+- Daniel confirmed backend meal-plan endpoints and API integration.
+- Saib reviewed database queries and ensured correct nutrition aggregation.
+- Omar supported backend validation and data retrieval logic.
+- Kareem reviewed UI/UX, responsiveness, and user experience of the macro breakdown feature.
+- Mcwill completed frontend implementation of charts and macro breakdown display.
+  
 ### Next Steps
 
 Sprint 3 is complete. Team will focus on documentation finalization and prepare for potential Sprint 4 work connecting the frontend to the backend API to remove mock data dependency.
 
 **Next Meeting:**  
-Date: Monday, March 28, 2026  
+Date: Monday, March 30, 2026  
 Time: 6:30 PM  
 Purpose: Sprint 4 planning or final project review
