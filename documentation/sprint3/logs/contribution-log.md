@@ -25,3 +25,32 @@
 | Mar 21, 2026 | Integration & Testing | 1.5h | Connected macro breakdown to meal planner, tested live updates, fixed bugs                            |
 | Mar 22, 2026 | Bug Fixes             | 1.0h | Fixed AppContext initialization, resolved recipes rendering error, debugged authentication issues     |
 | Mar 23, 2026 | Documentation         | 1.0h | Created GitHub issues, wrote user stories and acceptance tests, finalized sprint documentation        |
+
+# Kareem Dadouche – Sprint 3 Contribution Log
+
+## Contributions
+
+### Project Management & Planning
+- Structured the main user story (US08 – Weekly Calorie & Macro Breakdown)
+- Broke down the user story into detailed development tasks (Task08_01 → Task08_05)
+- Defined and organized acceptance tests (AT08_01, AT08_02)
+- Ensured proper linking between user stories, tasks, and acceptance tests
+
+### CI/CD Setup
+- Designed and implemented backend CI workflow using GitHub Actions
+- Configured Node.js environment and dependency installation
+- Added build and lint checks to automate backend validation
+- Debugged CI failures and fixed workflow configuration issues
+
+### Repository Organization
+- Structured issues using consistent naming conventions (US, Task, AT)
+- Applied labels for better organization and traceability
+- Maintained clear and readable issue descriptions for all deliverables
+
+### Technical Contributions
+- Defined logic for weekly nutrition aggregation (calories and macros)
+- Planned data flow for macro calculations and chart integration
+- Contributed to system design decisions for macro breakdown feature
+
+## Summary
+Contributed to both the technical setup (CI pipeline) and project organization (issues, planning, and traceability), ensuring a well-structured and maintainable sprint deliverable.
