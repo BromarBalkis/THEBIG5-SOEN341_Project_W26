@@ -12,20 +12,22 @@ export function RecipeCard({ entry, onRemove }: RecipeCardProps) {
   const recipe = entry.recipe;
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-2 shadow-sm">
-      <div className="flex items-start justify-between gap-1">
+    <div className="bg-white rounded-lg border border-gray-200 p-2 shadow-sm h-12 overflow-hidden">
+      <div className="flex items-center justify-between gap-1 h-full">
         <div className="min-w-0">
           <p className="text-xs font-semibold text-gray-800 truncate leading-tight">
             {recipe?.title ?? "Unknown Recipe"}
           </p>
-          {recipe?.prepTime && (
-            <p className="text-xs text-gray-500 mt-0.5">{recipe.prepTime} min</p>
-          )}
-          {recipe?.nutritionCalories && (
-            <p className="text-xs text-green-600 font-medium mt-0.5">
-              {Math.round(recipe.nutritionCalories)} kcal
-            </p>
-          )}
+          <p className="text-xs text-gray-500 truncate leading-tight">
+            {[
+              recipe?.prepTime ? `${recipe.prepTime} min` : null,
+              recipe?.nutritionCalories
+                ? `${Math.round(recipe.nutritionCalories)} kcal`
+                : null,
+            ]
+              .filter(Boolean)
+              .join(" · ")}
+          </p>
         </div>
         <button
           onClick={() => onRemove(entry.id)}

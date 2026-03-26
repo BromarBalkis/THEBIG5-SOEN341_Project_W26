@@ -28,10 +28,10 @@ export function WeeklyGrid({ entries, onRemove, onAdd }: WeeklyGridProps) {
 
   return (
     <div className="overflow-x-auto">
-      <table className="w-full min-w-[700px] border-collapse">
+      <table className="w-full min-w-[700px] border-collapse table-fixed">
         <thead>
           <tr>
-            <th className="w-24 pb-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide" />
+            <th className="w-20 pb-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide" />
             {DAYS.map((day) => (
               <th
                 key={day}
@@ -45,11 +45,11 @@ export function WeeklyGrid({ entries, onRemove, onAdd }: WeeklyGridProps) {
         <tbody>
           {MEAL_TYPES.map((mealType) => (
             <tr key={mealType} className="border-t border-gray-100">
-              <td className="py-2 pr-3 text-xs font-medium text-gray-500 whitespace-nowrap align-top pt-3">
+              <td className="py-2 pr-3 text-xs font-medium text-gray-500 whitespace-nowrap align-middle">
                 {mealType}
               </td>
               {DAYS.map((day) => (
-                <td key={day} className="py-2 px-1 align-top">
+                <td key={day} className="py-2 px-1 align-middle h-16">
                   <MealSlot
                     entry={getEntry(day, mealType)}
                     day={day}
