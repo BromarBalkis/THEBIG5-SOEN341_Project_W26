@@ -34,6 +34,7 @@ export function RecipePickerModal({
 }: RecipePickerModalProps) {
   const { recipes: mockRecipes } = useApp();
   const [apiRecipes, setApiRecipes] = useState<BackendRecipe[]>([]);
+  const [apiFetched, setApiFetched] = useState(false);
   const [search, setSearch] = useState("");
   const [isAdding, setIsAdding] = useState<string | null>(null);
 
@@ -51,8 +52,10 @@ export function RecipePickerModal({
     [mockRecipes]
   );
 
-  // Use real API recipes when available, otherwise fall back to mock data
-  const recipes = apiRecipes.length > 0 ? apiRecipes : mockMapped;
+  const isAuthenticated = typeof window !== "undefined" && !!localStorage.getItem("token");
+  // Authenticated users see only real recipes (empty list if none yet)
+  // Unauthenticated users see mock data
+  const recipes = isAuthenticated ? (apiFetched ? apiRecipes : []) : mockMapped;
 
   useEffect(() => {
     if (!isOpen) return;
@@ -60,12 +63,19 @@ export function RecipePickerModal({
     const token = localStorage.getItem("token");
     if (!token) return;
 
+    setApiFetched(false);
     fetch(`${API_URL}/api/recipes`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
-      .then((data) => setApiRecipes(Array.isArray(data) ? data : []))
-      .catch(console.error);
+      .then((data) => {
+        setApiRecipes(Array.isArray(data) ? data : []);
+        setApiFetched(true);
+      })
+      .catch((err) => {
+        console.error(err);
+        setApiFetched(true);
+      });
   }, [isOpen]);
 
   const filtered = recipes.filter((r) =>
