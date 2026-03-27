@@ -54,3 +54,9 @@
 
 ## Summary
 Contributed to both the technical setup (CI pipeline) and project organization (issues, planning, and traceability), ensuring a well-structured and maintainable sprint deliverable.
+
+# Omar Balkis – Sprint 3 Contribution Log
+
+| Team Member     | Total Hours |  Key Contributions                                                                                                                                         |
+| --------------- | ----------: | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Omar Balkis     |         11 |Contibutions to US-08 (Weekly Calorie & Macro Breakdown) pertaining to tasks 08_01 and 08_02. Backend work relating to calorie & macro calculation and distribiton. Fetching and processing nutrition information from meal plans and recipes, weekly/daily breakdowns to be presented through the frontend. |
