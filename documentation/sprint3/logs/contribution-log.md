@@ -98,7 +98,7 @@ Contributed to both the technical setup (CI pipeline) and project organization (
 
 ## Summary
 
-- **Total Hours:** 8 hours
+- **Total Hours:** 12.5 hours
 - **Primary Role:** Full stack Developer
 - **Features Implemented:** Special feature implementation, back-end 
 
