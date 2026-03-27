@@ -17,7 +17,7 @@ MealMajor is a full-stack web application that combines recipe management, weekl
 | Daniel Yota | Front-end/Back-end Developer | dyota0 | [ID] |
 | Saib Merabet | Back-end Developer | [username] | [ID] |
 | Omar Balkis | Back-end Developer | BromarBalkis | [ID] |
-| Kareem Dadouche | Front-end Developer | KareemDadouche | [ID] |
+| Kareem Dadouche | Front-end Developer | KareemDadouche | 40226983 |
 | Mcwill Buikpor | Front-end Developer | Mcwill-Ops | [ID] |
 
 ## Features

@@ -54,3 +54,66 @@
 
 ## Summary
 Contributed to both the technical setup (CI pipeline) and project organization (issues, planning, and traceability), ensuring a well-structured and maintainable sprint deliverable.
+
+# Omar Balkis – Sprint 3 Contribution Log
+
+| Team Member     | Total Hours |  Key Contributions                                                                                                                                         |
+| --------------- | ----------: | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Omar Balkis     |         11 |Contibutions to US-08 (Weekly Calorie & Macro Breakdown) pertaining to tasks 08_01 and 08_02. Backend work relating to calorie & macro calculation and distribiton. Fetching and processing nutrition information from meal plans and recipes, weekly/daily breakdowns to be presented through the frontend. |
+
+# Selmane Merabet - Sprint 3 Contribution Log
+
+## Summary
+
+- **Total Hours:** 14 hours  
+- **Primary Role:** Full-Stack Developer  
+- **Features Implemented:** Meal Planner Integration, Recipe UI Improvements, Dashboard Enhancements  
+
+---
+
+## Detailed Log
+
+| Date         | Activity                          | Time | Details                                                                 |
+|--------------|----------------------------------|------|-------------------------------------------------------------------------|
+| Mar 23, 2026 | Backend Setup                    | 2.0h | Configured root project and backend dependencies, ensured server runs properly |
+| Mar 23, 2026 | Merge & Sync                     | 1.0h | Merged latest changes from main branch and resolved inconsistencies     |
+| Mar 24, 2026 | Meal Planner Integration         | 2.5h | Connected meal planner to database, implemented API communication       |
+| Mar 24, 2026 | Meal Planner UI Fixes            | 1.5h | Fixed grid layout issues and improved responsiveness                    |
+| Mar 25, 2026 | Recipe UI Improvements           | 2.0h | Updated recipes and edit pages UI for better usability and consistency  |
+| Mar 25, 2026 | Dashboard Enhancements           | 1.5h | Replaced emojis with icons, improved overall UI clarity                 |
+| Mar 25, 2026 | Merge Conflict Resolution        | 1.0h | Resolved Git merge conflicts and ensured project stability              |
+| Mar 25, 2026 | Feature Integration Testing      | 1.5h | Tested meal planner + recipe features end-to-end, fixed minor bugs      |
+| Mar 25, 2026 | Code Cleanup & Optimization      | 1.0h | Refactored components and improved code structure for maintainability   |
+
+---
+
+## Notes
+
+- Contributed to both **frontend and backend integration**
+- Focused on connecting features to **real database data**
+- Improved **UI consistency and usability**
+- Ensured project stability through **merging and debugging**
+
+# Daniel - Sprint 3 Contribution Log
+
+## Summary
+
+- **Total Hours:** 12.5 hours
+- **Primary Role:** Full stack Developer
+- **Features Implemented:** Special feature implementation, back-end 
+
+---
+
+## Detailed Log
+
+| Date         | Activity              | Time | Details                                                                                               |
+| ------------ | --------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
+| Mar 15, 2026 | Sprint Planning       | 2.0h | Attended team meeting, proposed unique feature, estimated story points                                |
+| Mar 18, 2026 | Database Schema       | 0.5h | Reviewed Prisma schema for MealPlan and MealPlanEntry models                                          |
+| Mar 18, 2026 | Meal Planner UI       | 2.0h | Created weekly grid component (7 days × 4 meal types), implemented responsive design with Tailwind    |
+| Mar 19, 2026 | Recipe Assignment     | 2.0h | Built recipe picker modal, integrated with existing recipe data, added meal assignment functionality  |
+| Mar 19, 2026 | Meal Removal          | 0.5h | Implemented remove meal functionality with confirmation, updated grid state                           |
+| Mar 20, 2026 | Week Navigation       | 1.0h | Added previous/next week buttons, implemented ISO date handling for Monday-based weeks                |
+| Mar 20, 2026 | Macro Calculations    | 1.5h | Created utility functions to aggregate nutrition from meal plan, calculate totals and daily breakdown |
+| Mar 21, 2026 | Macro UI Components   | 1.5h | Built Macro Summary Card showing weekly totals (calories, protein, carbs, fat)                        |
+| Mar 21, 2026 | Pie Chart             | 1.5h | Integrated Recharts, created macro distribution donut chart with percentages                          |
