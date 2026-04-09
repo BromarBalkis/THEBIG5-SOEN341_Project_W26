@@ -5,6 +5,7 @@ Thumbs.db
 # IDE
 .idea/
 .vscode/
+*.iml
 
 # Logs (but allow documentation logs)
 logs/
