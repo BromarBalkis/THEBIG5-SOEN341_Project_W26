@@ -21,6 +21,20 @@ interface RegisterFormData {
 
 type PasswordStrength = 'weak' | 'medium' | 'strong' | ''
 
+function getStrengthBarClass(strength: PasswordStrength): string {
+  if (strength === 'weak') return 'w-1/3 bg-red-500'
+  if (strength === 'medium') return 'w-2/3 bg-yellow-500'
+  if (strength === 'strong') return 'w-full bg-green-500'
+  return ''
+}
+
+function getStrengthTextClass(strength: PasswordStrength): string {
+  if (strength === 'weak') return 'text-red-600'
+  if (strength === 'medium') return 'text-yellow-600'
+  if (strength === 'strong') return 'text-green-600'
+  return ''
+}
+
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
@@ -146,27 +160,11 @@ export default function RegisterPage() {
               <div className="mt-2 mb-4">
                 <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
                   <div
-                    className={`h-full transition-all duration-300 ${
-                      passwordStrength === 'weak'
-                        ? 'w-1/3 bg-red-500'
-                        : passwordStrength === 'medium'
-                        ? 'w-2/3 bg-yellow-500'
-                        : passwordStrength === 'strong'
-                        ? 'w-full bg-green-500'
-                        : ''
-                    }`}
+                    className={`h-full transition-all duration-300 ${getStrengthBarClass(passwordStrength)}`}
                   />
                 </div>
                 <p
-                  className={`text-xs mt-1 font-medium ${
-                    passwordStrength === 'weak'
-                      ? 'text-red-600'
-                      : passwordStrength === 'medium'
-                      ? 'text-yellow-600'
-                      : passwordStrength === 'strong'
-                      ? 'text-green-600'
-                      : ''
-                  }`}
+                  className={`text-xs mt-1 font-medium ${getStrengthTextClass(passwordStrength)}`}
                 >
                   {passwordStrength ? `Strength: ${passwordStrength.charAt(0).toUpperCase() + passwordStrength.slice(1)}` : ''}
                 </p>

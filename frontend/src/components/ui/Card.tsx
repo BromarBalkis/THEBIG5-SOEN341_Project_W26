@@ -28,8 +28,16 @@ export function Card({
 
   const combinedClassName = `${baseClasses} ${paddingClasses[padding]} ${hoverClasses} ${className}`.trim();
 
+  if (onClick) {
+    return (
+      <button type="button" onClick={onClick} className={combinedClassName}>
+        {children}
+      </button>
+    );
+  }
+
   return (
-    <div onClick={onClick} className={combinedClassName}>
+    <div className={combinedClassName}>
       {children}
     </div>
   );
