@@ -20,18 +20,13 @@ import type {
   DailyNutrition,
 } from "@/types/meal-plan.types";
 import { useApp } from "@/context/AppContext";
+import {
+  toApiRecipe,
+  computeWeeklyTotals,
+  computeDailyBreakdown,
+} from "@/lib/nutritionUtils";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-
-const DAYS_OF_WEEK: DayOfWeek[] = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
 
 function getMondayOfWeek(date: Date): string {
   const d = new Date(date);
@@ -45,20 +40,6 @@ function shiftWeek(weekOf: string, direction: 1 | -1): string {
   const d = new Date(weekOf + "T00:00:00");
   d.setDate(d.getDate() + direction * 7);
   return d.toISOString().split("T")[0];
-}
-
-function toApiRecipe(r: Recipe): ApiRecipe {
-  return {
-    id: r.id,
-    title: r.title,
-    prepTime: r.prepTime,
-    difficulty: r.difficulty,
-    dietaryTags: r.dietaryTags as string[],
-    nutritionCalories: r.nutrition?.calories ?? null,
-    nutritionProtein: r.nutrition?.protein ?? null,
-    nutritionCarbs: r.nutrition?.carbs ?? null,
-    nutritionFat: r.nutrition?.fat ?? null,
-  };
 }
 
 export interface MealPlanContextType {
@@ -267,36 +248,15 @@ export function MealPlanProvider({ children }: { children: ReactNode }) {
 
   // ── derived nutrition ─────────────────────────────────────────────────────
 
-  const weeklyTotals = useMemo<NutritionTotals>(() => {
-    const entries: ApiMealPlanEntry[] = mealPlan?.entries ?? [];
-    return entries.reduce(
-      (acc, e) => {
-        acc.calories += e.recipe?.nutritionCalories ?? 0;
-        acc.protein += e.recipe?.nutritionProtein ?? 0;
-        acc.carbs += e.recipe?.nutritionCarbs ?? 0;
-        acc.fat += e.recipe?.nutritionFat ?? 0;
-        return acc;
-      },
-      { calories: 0, protein: 0, carbs: 0, fat: 0 }
-    );
-  }, [mealPlan]);
+  const weeklyTotals = useMemo<NutritionTotals>(
+    () => computeWeeklyTotals(mealPlan?.entries ?? []),
+    [mealPlan]
+  );
 
-  const dailyBreakdown = useMemo<DailyNutrition[]>(() => {
-    const entries: ApiMealPlanEntry[] = mealPlan?.entries ?? [];
-    return DAYS_OF_WEEK.map((day) => {
-      const dayEntries = entries.filter((e) => e.day === day);
-      return dayEntries.reduce(
-        (acc, e) => {
-          acc.calories += e.recipe?.nutritionCalories ?? 0;
-          acc.protein += e.recipe?.nutritionProtein ?? 0;
-          acc.carbs += e.recipe?.nutritionCarbs ?? 0;
-          acc.fat += e.recipe?.nutritionFat ?? 0;
-          return acc;
-        },
-        { day, calories: 0, protein: 0, carbs: 0, fat: 0 } as DailyNutrition
-      );
-    });
-  }, [mealPlan]);
+  const dailyBreakdown = useMemo<DailyNutrition[]>(
+    () => computeDailyBreakdown(mealPlan?.entries ?? []),
+    [mealPlan]
+  );
 
   const value: MealPlanContextType = {
     mealPlan,
