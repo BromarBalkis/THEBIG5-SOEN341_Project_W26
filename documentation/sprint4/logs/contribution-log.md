@@ -15,3 +15,9 @@ Prepared and updated Sprint 4 meeting minutes and personal contribution document
 Meeting 4
 
 I Worked on front-end implementation, improved UI/UX consistency, and supported final testing and readiness of the application before submission.
+
+# Omar Balkis – Sprint 4 Contribution Log
+
+| Team Member     | Total Hours |  Key Contributions                                                                                                                     |
+| --------------- | ----------: | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Omar Balkis     |          7  | Contibutions final presentation powerpoint, report, last pass over the program to check for bugs, set up SonarQube linter with GitHub. |
