@@ -1,4 +1,4 @@
-THEBIG5 — Sprint 4 Meeting Minutes
+THEBIG5 - Sprint 4 Meeting Minutes
 
 Team: THEBIG5
 Sprint: 4
@@ -13,16 +13,12 @@ Mode: Online
 
 What was done:
 
-Confirm Sprint 4 scope and final deliverables
-Review remaining Weekly Meal Planner features
-Confirm unique feature completion
-Unit testing and CI/CD expectations
-Repository organization and code review approach
+During this team meeting, we confirm Sprint 4 scope and we final deliverables. We also review remaining Weekly Meal Planner features, confirm unique feature completion, unit testing and CI/CD expectations, and repository organization and code review approach
 
 Discussion & Updates:
 
-Sprint 4 was confirmed as the final implementation and maintenance sprint. The team reviewed the Weekly Meal Planner requirements and ensured all remaining components would be completed. The unique feature, Weekly Calorie & Macro Breakdown, was confirmed as part of the final deliverable.
-The team also discussed Sprint 4 requirements, including real unit testing, CI/CD validation, repository organization, code review, and static analysis for identifying and fixing issues.
+The team reviewed the Weekly Meal Planner requirements and made sure all remaining components would be completed. The unique feature, Weekly Calorie & Macro Breakdown, was polished and marked as completed.
+The team also discussed Sprint 4 requirements which includes real unit testing, CI/CD validation, repository organization, code review, and static analysis for identifying and fixing issues.
 
 Decisions:
 
@@ -33,7 +29,7 @@ Repository must be cleaned and properly structured
 
 Action Items
 
-Kareem: carried out GitHub cleanup, including repository organization, issue traceability, and finalization of Sprint-related artifacts.
+Mcwill & Saib: carried out GitHub cleanup, including repository organization, issue traceability, and finalization of Sprint-related artifacts.
 
 Meeting #2
 
@@ -51,8 +47,7 @@ Code review preparation
 
 Discussion & Updates:
 
-The team reviewed progress on the final implementation of both the Weekly Meal Planner and the unique feature. Repository cleanup was discussed, including removing unnecessary files and ensuring a clear project structure.
-The importance of maintaining proper issue labeling, traceability, and CI/CD readiness was emphasized.
+The team reviewed progress on the final implementation of both the Weekly Meal Planner and the unique feature. We also discussed about the repo cleanup to have a clear project structure.
 
 Decisions:
 
@@ -63,7 +58,7 @@ Pull requests must be used for code review
 
 Action Items
 
-Kareem: organized and updated Sprint 4 documentation, ensuring required artifacts were structured and maintained clearly.
+Kareem & Daniel: organized and updated Sprint 4 documentation, ensuring required artifacts were structured and maintained clearly.
 
 Meeting #3
 
@@ -81,8 +76,7 @@ Documentation status
 
 Discussion & Updates:
 
-The team discussed the importance of ensuring sufficient test coverage and validating all major system functionality. Static analysis requirements were reviewed, with a focus on identifying and fixing at least five issues.
-Documentation progress, including meeting minutes and contribution logs, was also reviewed.
+The team discussed the importance of ensuring sufficient test coverage and validating all major system functionality. We also reviewed the static analysis requirements. The team aslo satrted working on the documentation.
 
 Decisions:
 
@@ -93,7 +87,7 @@ Documentation must be completed prior to submission
 
 Action Items
 
-Kareem: supported front-end refinement, with focus on UI consistency and usability across the application.
+Daniel & Omar: supported front-end refinement, with focus on UI consistency and usability across the application.
 
 
 Meeting #4
@@ -113,8 +107,7 @@ Demo preparation
 
 Discussion & Updates:
 
-The team conducted a final review of Sprint 4 requirements, ensuring that all features were implemented and tested. CI/CD, code review, and static analysis tasks were verified. Documentation was reviewed and finalized.
-The team also prepared for the final demo and ensured readiness for submission.
+The team conducted a final review of Sprint 4 requirements and made sure all the requirements were met. We also prepared for the final demo and ensured readiness for submission.
 
 Decisions:
 
@@ -124,4 +117,4 @@ No further major changes will be made
 
 Action Items
 
-Kareem: supported testing activities, reviewed issue status, and helped verify final readiness of the application before submission.
+Mcwill, Kareem, Omar, Saib, Daniel: supported testing activities, reviewed issue status, and helped verify final readiness of the application before submission.
