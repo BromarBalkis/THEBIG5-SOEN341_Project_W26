@@ -21,3 +21,12 @@ I Worked on front-end implementation, improved UI/UX consistency, and supported 
 | Team Member     | Total Hours |  Key Contributions                                                                                                                     |
 | --------------- | ----------: | -------------------------------------------------------------------------------------------------------------------------------------- |
 | Omar Balkis     |          7  | Contibutions final presentation powerpoint, report, last pass over the program to check for bugs, set up SonarQube linter with GitHub. |
+
+
+I Worked on front-end implementation, improved UI/UX consistency, and supported final testing and readiness of the application before submission.
+
+# Daniel Yota – Sprint 4 Contribution Log
+
+| Team Member     | Total Hours |  Key Contributions                                                                                                                     |
+| --------------- | ----------: | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Omar Balkis     |          6  | Front-end implementation of meal planner and macro visualization components, improved UI/UX consistency, integrated features into main dashboard, and supported final testing, debugging, and system readiness before submission. |
