@@ -1,298 +1,140 @@
-# MealMajor
+# MealMajor — Full-Stack Meal Planning Platform
 
-A comprehensive meal planning and healthy living application designed to help students manage their nutrition, discover recipes, and plan weekly meals.
+Full-stack meal planning and healthy living platform built with Next.js, React, TypeScript, Node.js, Express.js, MongoDB, and Prisma.
 
-## Project Overview
+MealMajor helps users manage recipes, organize weekly meals, and track calories and macronutrients through interactive nutrition dashboards.
 
-**Course:** SOEN 341 - Software Process  
-**Semester:** Winter 2026  
-**Team:** THEBIG5
 
-MealMajor is a full-stack web application that combines recipe management, weekly meal planning, and nutrition tracking to support healthy eating habits for busy students.
+## 📸 Screenshots
 
-## Team Members
+### Weekly Meal Planner
+_Add screenshot here._
 
-| Name | Role | GitHub Username | Student ID |
-|------|------|-----------------|------------|
-| Daniel Yota | Front-end/Back-end Developer | dyota0 | [ID] |
-| Saib Merabet | Back-end Developer | [username] | [ID] |
-| Omar Balkis | Back-end Developer | BromarBalkis | [ID] |
-| Kareem Dadouche | Front-end Developer | KareemDadouche | 40226983 |
-| Mcwill Buikpor | Front-end Developer | Mcwill-Ops | [ID] |
+### Recipe Dashboard
+_Add screenshot here._
 
-## Features
+### Macro Summary Card
+_Add screenshot here._
 
-### Sprint 1: User Account Management
-- User registration and authentication
-- User profile management
-- Dietary preferences and allergies tracking
-- Secure JWT-based authentication
+### Macro Distribution Pie Chart
+_Add screenshot here._
 
-### Sprint 2: Recipe Management
-- Create, read, update, and delete recipes
-- Search recipes by title and ingredients
-- Filter recipes by difficulty, time, cost, and dietary tags
-- Detailed recipe pages with ingredients, steps, and nutrition info
+### Daily Calories Bar Chart
+_Add screenshot here._
 
-### Sprint 3: Weekly Meal Planner
-- 7-day meal planning grid (Monday-Sunday)
-- Four meal types per day (Breakfast, Lunch, Dinner, Snack)
-- Assign recipes to specific meal slots
-- Remove meals from planner
-- Navigate between different weeks
+## 🚀 Highlights
 
-### Sprint 3: Weekly Calorie & Macro Breakdown (Unique Feature)
-- Display total weekly calories and macronutrients
-- Visual macro distribution pie chart (Protein, Carbs, Fat)
-- Daily calorie bar chart across the week
-- Real-time updates when meals are added or removed
-- Average calories per day calculation
+- JWT-based user authentication
+- Recipe creation, editing, search, and filtering
+- Weekly meal planner with breakfast, lunch, dinner, and snack slots
+- Weekly calorie and macro breakdown
+- Interactive pie and bar charts using Recharts
+- Full-stack client-server architecture
+- Agile team development using GitHub Issues, pull requests, and code reviews
+
+## Overview
+
+MealMajor is a full-stack web application developed as part of SOEN 341 — Software Process at Concordia University.
+
+The platform allows users to plan meals across a weekly calendar, manage recipe information, and visualize nutrition data such as total calories, protein, carbohydrates, and fat. The application uses a Next.js frontend connected to an Express.js REST API and MongoDB database.
+
+## Key Features
+
+### Recipe Management
+Users can create, edit, delete, search, and filter recipes based on ingredients, preparation time, difficulty, cost, and dietary tags.
+
+### Weekly Meal Planner
+Users can assign recipes to specific days and meal types, including breakfast, lunch, dinner, and snacks.
+
+### Nutrition Analytics
+The platform calculates weekly calories and macronutrients, then displays the results through interactive charts and summary cards.
+
+### Authentication
+Secure user registration and login are handled using JWT-based authentication and password hashing.
 
 ## Tech Stack
 
 ### Frontend
-- **Framework:** Next.js 16 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **UI Library:** React 19
-- **Charts:** Recharts
-- **Icons:** Lucide React
-- **State Management:** React Context API
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS
+- Recharts
+- Lucide React
+- React Context API
 
 ### Backend
-- **Runtime:** Node.js
-- **Framework:** Express.js 5
-- **Database:** MongoDB
-- **ORM:** Prisma 6
-- **Authentication:** JWT (JSON Web Tokens)
-- **Password Hashing:** bcrypt
+- Node.js
+- Express.js 5
+- MongoDB
+- Prisma ORM
+- JWT Authentication
+- bcrypt
+
+### Dev Tools
+- Git
+- GitHub
+- GitHub Actions
+- npm
 
 ## Project Structure
-```
-THEBIG5-SOEN341_Project_W26/
-├── frontend/               # Next.js frontend application
+
+```bash
+mealmajor/
+├── frontend/              # Next.js frontend application
 │   ├── src/
-│   │   ├── app/           # Next.js app router pages
+│   │   ├── app/           # App Router pages
 │   │   ├── components/    # React components
 │   │   ├── context/       # React Context providers
 │   │   ├── lib/           # Utility functions
-│   │   └── types/         # TypeScript type definitions
-│   ├── public/            # Static assets
-│   └── package.json
+│   │   └── types/         # TypeScript types
+│   └── public/            # Static assets
 ├── backend/               # Express.js backend application
 │   ├── src/
 │   │   ├── controllers/   # Route controllers
 │   │   ├── routes/        # API routes
-│   │   ├── middleware/    # Express middleware
+│   │   ├── middleware/    # Authentication middleware
 │   │   └── db/            # Database configuration
-│   ├── prisma/
-│   │   └── schema.prisma  # Database schema
-│   └── package.json
-├── sprint1/               # Sprint 1 documentation
-├── sprint2/               # Sprint 2 documentation
-├── sprint3/               # Sprint 3 documentation
-│   ├── minutes/           # Meeting minutes
-│   ├── contributions/     # Team member contribution logs
-│   └── sprint-plan.md     # Sprint planning table
+│   └── prisma/
+│       └── schema.prisma  # Database schema
 └── README.md
 ```
 
-## Installation and Setup
+## My Contributions
 
-### Prerequisites
-- Node.js (v18 or higher)
-- npm or yarn
-- MongoDB database (local or cloud)
-
-### Backend Setup
-
-1. Navigate to the backend directory:
-```bash
-cd backend
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Create a `.env` file in the backend directory:
-```env
-DATABASE_URL=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-PORT=5000
-```
-
-4. Generate Prisma client:
-```bash
-npx prisma generate
-```
-
-5. Start the development server:
-```bash
-npm run dev
-```
-
-The backend will run on `http://localhost:5000`
-
-### Frontend Setup
-
-1. Navigate to the frontend directory:
-```bash
-cd frontend
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Create a `.env.local` file in the frontend directory:
-```env
-NEXT_PUBLIC_API_URL=http://localhost:5000
-```
-
-4. Start the development server:
-```bash
-npm run dev
-```
-
-The frontend will run on `http://localhost:3000`
-
-### Running Both Servers
-
-From the root directory:
-```bash
-npm run dev
-```
-
-This will start both the frontend and backend concurrently.
-
-## API Documentation
-
-### Authentication Endpoints
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login` - Login and receive JWT token
-
-### User Endpoints
-- `GET /api/users/me` - Get current user profile (requires auth)
-- `PUT /api/users/me` - Update user profile (requires auth)
-
-### Recipe Endpoints
-- `GET /api/recipes` - Get all recipes (supports filtering)
-- `GET /api/recipes/:id` - Get single recipe
-- `POST /api/recipes` - Create new recipe (requires auth)
-- `PUT /api/recipes/:id` - Update recipe (requires auth)
-- `DELETE /api/recipes/:id` - Delete recipe (requires auth)
-
-### Meal Plan Endpoints
-- `GET /api/meal-plans?weekOf=YYYY-MM-DD` - Get meal plan for specific week
-- `POST /api/meal-plans/entries` - Add meal to plan (requires auth)
-- `DELETE /api/meal-plans/entries/:id` - Remove meal from plan (requires auth)
+- Developed frontend components for the weekly meal planner and nutrition tracking features.
+- Built interactive calorie and macronutrient visualization components using Recharts.
+- Implemented the weekly macro breakdown feature, including summary cards, macro distribution charts, and daily calorie charts.
+- Integrated frontend pages with backend API endpoints for recipe and meal planning data.
+- Participated in Agile sprint planning, GitHub Issues, pull requests, and code reviews.
+- Contributed to testing, documentation, and project organization.
 
 ## Development Workflow
 
-### Branch Strategy
-- `main` - Production-ready code
-- `sprint#-clean` - Sprint development branches
-- Feature branches for individual tasks
+The project was developed using an Agile Scrum workflow with sprint planning, user stories, task breakdowns, acceptance tests, pull requests, and team code reviews.
 
-### Commit Convention
-```
-feat: Add new feature
-fix: Bug fix
-docs: Documentation changes
-chore: Maintenance tasks
-```
+Main development practices included:
 
-### Sprint Methodology
-The team follows Agile Scrum methodology with:
-- Weekly sprints
-- Sprint planning meetings
-- Mid-sprint check-ins
-- Sprint reviews and retrospectives
-- Daily progress tracking via GitHub
+- GitHub Issues for user stories and task tracking
+- Pull requests for feature integration
+- Code reviews before merging changes
+- Sprint documentation and contribution logs
+- GitHub Actions for CI/CD workflows
 
-## Sprint Progress
+## Future Improvements
 
-### Sprint 1 (Completed)
-- User authentication system
-- Profile management
-- Basic application setup
+- Smart grocery list generation from weekly meal plans
+- Mobile application support
+- Recipe sharing between users
+- Fitness tracking integration
+- AI-assisted meal recommendations
+- Improved nutrition goal customization
+- More advanced meal filtering based on dietary restrictions
 
-### Sprint 2 (Completed)
-- Recipe CRUD operations
-- Recipe search and filtering
-- Recipe detail pages
+## Context
 
-### Sprint 3 (Completed)
-- Weekly meal planner with 7-day grid
-- Recipe assignment to meal slots
-- Weekly macro breakdown with visual charts
-- Real-time nutrition calculations
-
-## Key Decisions
-
-### Unique Feature Selection
-Initially planned: Smart Grocery List Generation  
-Changed to: Weekly Calorie & Macro Breakdown
-
-**Rationale:**
-- Better alignment with healthy living theme
-- Leverages existing nutrition data in recipe schema
-- Lower implementation risk
-- Provides immediate visual value to users
-- Natural extension of meal planning functionality
-
-### Technology Choices
-- **Next.js App Router:** Modern React framework with server components
-- **Prisma ORM:** Type-safe database access for MongoDB
-- **Recharts:** Flexible charting library for nutrition visualizations
-- **Context API:** Simple state management without additional dependencies
-
-## Testing
-
-### Running Tests
-```bash
-# Frontend
-cd frontend
-npm test
-
-# Backend
-cd backend
-npm test
-```
-
-Note: Unit tests are currently in development.
-
-## Documentation
-
-All sprint documentation is organized in sprint-specific folders:
-- Sprint planning tables
-- User stories (GitHub Issues)
-- Task breakdowns (GitHub Issues)
-- Acceptance tests (GitHub Issues)
-- Meeting minutes
-- Individual contribution logs
-
-## Future Enhancements
-
-- Grocery list generation from meal plans
-- Social features (share recipes, meal plans)
-- Mobile application
-- Integration with fitness tracking apps
-- Recipe import from popular cooking websites
-- Meal prep suggestions and batch cooking guides
+Built as part of SOEN 341 — Software Process at Concordia University by Team THEBIG5.
 
 ## License
 
-This project is developed as part of SOEN 341 coursework at Concordia University.
-
-## Contact
-
-For questions or issues, please contact the team via GitHub issues or reach out to individual team members.
-
----
-
-**Last Updated:** March 23, 2026  
-**Version:** Sprint 3 Release
+This project was developed for academic purposes.
